@@ -10,6 +10,7 @@ readme = "README.md"
 keywords = ["memchr", "char", "scan", "strchr", "string"]
 license = "Unlicense/MIT"
 exclude = ["/ci/*", "/.travis.yml", "/Makefile", "/appveyor.yml"]
+edition = "2018"
 
 [lib]
 name = "memchr"

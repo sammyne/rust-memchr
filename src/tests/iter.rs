@@ -1,5 +1,5 @@
-use tests::memchr_tests;
-use {Memchr, Memchr2, Memchr3};
+use crate::tests::memchr_tests;
+use crate::{Memchr, Memchr2, Memchr3};
 
 #[test]
 fn memchr1_iter() {

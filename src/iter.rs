@@ -1,4 +1,4 @@
-use {memchr, memchr2, memchr3, memrchr, memrchr2, memrchr3};
+use crate::{memchr, memchr2, memchr3, memrchr, memrchr2, memrchr3};
 
 macro_rules! iter_next {
     // Common code for the memchr iterators:
