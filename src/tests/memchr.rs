@@ -1,5 +1,8 @@
+use std::prelude::v1::*;
+use testing::test;
+
 use crate::fallback;
-use crate::naive;
+//use crate::naive;
 use crate::{memchr, memchr2, memchr3, memrchr, memrchr2, memrchr3};
 
 use crate::tests::memchr_tests;
@@ -88,6 +91,7 @@ fn memrchr3_fallback_find() {
     }
 }
 
+/*
 quickcheck! {
     fn qc_memchr1_matches_naive(n1: u8, corpus: Vec<u8>) -> bool {
         memchr(n1, &corpus) == naive::memchr(n1, &corpus)
@@ -129,3 +133,4 @@ quickcheck! {
         memrchr3(n1, n2, n3, &corpus) == naive::memrchr3(n1, n2, n3, &corpus)
     }
 }
+*/

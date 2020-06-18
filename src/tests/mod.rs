@@ -1,5 +1,10 @@
 use std::iter::repeat;
 
+use std::prelude::v1::*;
+use testing::{generate_runner, test};
+
+generate_runner!();
+
 mod iter;
 mod memchr;
 

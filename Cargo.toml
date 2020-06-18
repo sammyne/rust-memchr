@@ -23,16 +23,39 @@ default = ["std"]
 # permits this crate to use runtime CPU feature detection to automatically
 # accelerate searching via vector instructions. Without the standard library,
 # this automatic detection is not possible.
-std = []
+std = ["sgx_tstd"]
 # The 'use_std' feature is DEPRECATED. It will be removed in memchr 3. Until
 # then, it is alias for the 'std' feature.
 use_std = ["std"]
 
+with-testing = ["inventory", "sgx_tstd", "testing"]
+
 [dependencies]
-libc = { version = "0.2.18", default-features = false, optional = true }
+# libc = { version = "0.2.18", default-features = false, optional = true }
 
 [dev-dependencies]
-quickcheck = { version = "0.9", default-features = false }
+# quickcheck = { version = "0.9", default-features = false }
 
 [profile.test]
 opt-level = 3
+
+[dependencies.inventory]
+optional    = true
+version     = "0.1.6"
+
+[dependencies.libc]
+git         = "https://github.com/apache/teaclave-sgx-sdk"
+optional    = true
+package     = "sgx_libc"
+rev         = "v1.1.2"
+
+[dependencies.sgx_tstd]
+features    = ["thread"]
+git         = "https://github.com/apache/teaclave-sgx-sdk"
+optional    = true
+rev         = "v1.1.2"
+
+[dependencies.testing]
+branch      = "rsgx1.1.2"
+git         = "https://github.com/sammyne/teaclave-testing"
+optional    = true

@@ -20,8 +20,8 @@ provides its own implementation of `memrchr` as well, on top of `memchr2`,
 instead of one. Similarly for `memchr3`.
 */
 
-#![cfg_attr(not(feature = "std"), no_std)]
-#![deny(missing_docs)]
+#![no_std]
+//#![deny(missing_docs)]
 #![doc(html_root_url = "https://docs.rs/memchr/2.0.0")]
 
 // Supporting 8-bit (or others) would be fine. If you need it, please submit a
@@ -32,6 +32,10 @@ instead of one. Similarly for `memchr3`.
     target_pointer_width = "64"
 )))]
 compile_error!("memchr currently not supported on non-32 or non-64 bit");
+
+#[cfg(feature = "std")]
+#[macro_use]
+extern crate sgx_tstd as std;
 
 #[cfg(feature = "std")]
 extern crate core;
@@ -51,8 +55,9 @@ mod c;
 mod fallback;
 mod iter;
 mod naive;
-#[cfg(all(test, all(not(miri), feature = "std")))]
-mod tests;
+#[cfg(all(feature = "with-testing", all(not(miri), feature = "std")))]
+pub mod tests;
+// for no-std, just the standard cargo test is fine
 #[cfg(all(test, any(miri, not(feature = "std"))))]
 #[path = "tests/miri.rs"]
 mod tests;

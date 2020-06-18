@@ -1,3 +1,7 @@
+#![allow(dead_code)]
+use std::prelude::v1::*;
+use testing::test;
+
 use crate::tests::memchr_tests;
 use crate::{Memchr, Memchr2, Memchr3};
 
@@ -47,6 +51,7 @@ fn memrchr3_iter() {
     }
 }
 
+/*
 quickcheck! {
     fn qc_memchr_double_ended_iter(
         needle: u8, data: Vec<u8>, take_side: Vec<bool>
@@ -155,6 +160,7 @@ quickcheck! {
         true
     }
 }
+*/
 
 // take items from a DEI, taking front for each true and back for each false.
 // Return a vector with the concatenation of the fronts and the reverse of the
